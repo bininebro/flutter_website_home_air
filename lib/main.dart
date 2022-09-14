@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_design/widgets/gradient_arc_painter.dart';
+import 'package:flutter_web_design/widgets/square_action_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,21 +32,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isSwitched = true;
-
-  void toggleSwitch(bool value) {
-    if (isSwitched == false) {
-      setState(() {
-        isSwitched = true;
-      });
-    } else {
-      setState(() {
-        isSwitched = false;
-      });
-      print('Switch Button is OFF');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -62,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  height: size.height * .7,
+                  height: 400,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -112,194 +99,258 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           const SizedBox(width: 12),
-          SizedBox(
-            width: size.width * .45,
-            child: Column(
-              children: [
-                TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      labelText: 'Search',
-                      prefixIcon: const Icon(Icons.search)),
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.orangeAccent.shade100,
+          SingleChildScrollView(
+            child: SizedBox(
+              width: size.width * .55,
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        labelText: 'Search',
+                        prefixIcon: const Icon(Icons.search)),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Hello, Scarlet',
-                          style: TextStyle(
-                              fontSize: 35,
-                              color: Colors.orange,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        const Text(
-                          'Wellcome home! The air Quality is fresh and good you can go out today',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.orange,
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        Wrap(
-                          children: const [
-                            Icon(Icons.ad_units_outlined),
-                            Text(
-                              '25+',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              'Out door temperature',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 8),
-                        Wrap(
-                          children: const [
-                            Icon(Icons.cloud_queue_outlined),
-                            Text(
-                              'Outdoor temperature',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        )
-                      ],
+                  const SizedBox(height: 20),
+                  Container(
+                    height: 160,
+                    width: size.width * .55,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.orangeAccent.shade100,
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Scarlet\'s Home'),
-                          SizedBox(
-                            width: 280,
-                            height: 80,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Wrap(
-                                  children: const [
-                                    Icon(
-                                      Icons.water_drop_outlined,
-                                      color: Colors.grey,
-                                    ),
-                                    Text(
-                                      '35%',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
-                                ),
-                                Wrap(
-                                  children: const [
-                                    Icon(
-                                      Icons.severe_cold,
-                                      color: Colors.grey,
-                                    ),
-                                    Text(
-                                      '15^C',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.grey.shade200),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 15.0, right: 15.0),
-                                    child: DropdownButton(
-                                      icon: const Icon(
-                                          Icons.chevron_left_rounded),
-                                      value: 'Living Room',
-                                      items: const [
-                                        DropdownMenuItem(
-                                          value: 'Living Room',
-                                          child: Text('Living Room'),
-                                        ),
-                                        DropdownMenuItem(
-                                          value: 'Bed Room',
-                                          child: Text('Bed Room'),
-                                        ),
-                                        DropdownMenuItem(
-                                          value: 'Shower',
-                                          child: Text('Shower'),
-                                        ),
-                                        DropdownMenuItem(
-                                          value: 'Kitchen',
-                                          child: Text('Kitchen'),
-                                        )
-                                      ],
-                                      onChanged: (value) {},
-                                    ),
-                                  ),
-                                )
-                              ],
+                          const Text(
+                            'Hello, Scarlet',
+                            style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.orange,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const Text(
+                            'Wellcome home! The air Quality is fresh and good you can go out today',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.orange,
                             ),
+                          ),
+                          const SizedBox(height: 20),
+                          Wrap(
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            spacing: 10,
+                            children: const [
+                              Icon(Icons.ad_units_outlined),
+                              Text(
+                                '25~C',
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'Out door temperature',
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 8),
+                          Wrap(
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            spacing: 10,
+                            children: const [
+                              Icon(Icons.cloud_queue_outlined),
+                              Text(
+                                'Outdoor temperature',
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
+                              ),
+                            ],
                           )
                         ],
                       ),
-                      SizedBox(height: 15),
-                      Row(
-                        children: [
-                          //Custome Widgets goes here
-                          Container(
-                            height: 100,
-                            width: 120,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('Scarlet\'s Home'),
+                            SizedBox(
+                              width: 280,
+                              height: 80,
+                              child: Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                  Wrap(
+                                    children: const [
+                                      Icon(
+                                        Icons.water_drop_outlined,
+                                        color: Colors.grey,
+                                      ),
+                                      Text(
+                                        '35%',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
+                                  ),
+                                  Wrap(
+                                    children: const [
+                                      Icon(
+                                        Icons.severe_cold,
+                                        color: Colors.grey,
+                                      ),
+                                      Text(
+                                        '15^C',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.grey.shade200),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 15.0, right: 15.0),
+                                      child: DropdownButton(
+                                        icon: const Icon(
+                                            Icons.chevron_left_rounded),
+                                        value: 'Living Room',
+                                        items: const [
+                                          DropdownMenuItem(
+                                            value: 'Living Room',
+                                            child: Text('Living Room'),
+                                          ),
+                                          DropdownMenuItem(
+                                            value: 'Bed Room',
+                                            child: Text('Bed Room'),
+                                          ),
+                                          DropdownMenuItem(
+                                            value: 'Shower',
+                                            child: Text('Shower'),
+                                          ),
+                                          DropdownMenuItem(
+                                            value: 'Kitchen',
+                                            child: Text('Kitchen'),
+                                          )
+                                        ],
+                                        onChanged: (value) {},
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(height: 2),
+                        Wrap(
+                          spacing: 20,
+                          children: [
+                            SquareActionWidget(
+                                isActive: false,
+                                text: 'Refregrator',
+                                icon: Icons.ad_units),
+                            SquareActionWidget(
+                                isActive: true,
+                                text: 'Tempature',
+                                icon: Icons.bolt_outlined),
+                            SquareActionWidget(
+                                isActive: false,
+                                text: 'Air Condtioner',
+                                icon: Icons.air),
+                            SquareActionWidget(
+                                isActive: false,
+                                text: 'Lights',
+                                icon: Icons.lightbulb_outline)
+                          ],
+                        ),
+                        const SizedBox(height: 15),
+                        Container(
+                          height: 300,
+                          width: size.width * .55,
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Wrap(
+                                    spacing: 10,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.center,
                                     children: [
-                                      const Text('on'),
+                                      Icon(Icons.offline_bolt_rounded,
+                                          color: Colors.deepPurple),
+                                      Text(
+                                        'Living Room Temprature',
+                                        style: TextStyle(
+                                            color: Colors.deepPurple,
+                                            fontSize: 16),
+                                      )
+                                    ],
+                                  ),
+                                  Wrap(
+                                    spacing: 10,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.center,
+                                    children: [
+                                      Text(
+                                        'ON',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                       Switch(
-                                        value: isSwitched,
+                                        value: true,
                                         onChanged: (value) {},
                                         activeColor: Colors.deepPurple,
                                       )
                                     ],
-                                  ),
-                                  const Icon(Icons.phone_android_sharp),
-                                  const Text('Refrigerator')
+                                  )
                                 ],
                               ),
-                            ),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: const [
+                                  Icon(Icons.minimize),
+                                  Center(
+                                    child: SizedBox(
+                                      width: 100.0,
+                                      height: 100.0,
+                                      child: CustomPaint(
+                                        painter: GradientArcPainter(
+                                          progress: .2,
+                                          startColor: Colors.deepPurple,
+                                          endColor: Colors.deepOrangeAccent,
+                                          width: 8.0,
+                                        ),
+                                        child: Center(child: Text('25~C')),
+                                      ),
+                                    ),
+                                  ),
+                                  Icon(Icons.add)
+                                ],
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           )
         ],
