@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_design/widgets/circlular_widget.dart';
 import 'package:flutter_web_design/widgets/gradient_arc_painter.dart';
 import 'package:flutter_web_design/widgets/graph_chart.dart';
 import 'package:flutter_web_design/widgets/rectangle_action_widgets.dart';
 import 'package:flutter_web_design/widgets/square_action_widget.dart';
-import 'package:flutter_web_design/widgets/circlular_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Row(
           children: [
             Container(
-              width: 80,
+              width: 70,
               decoration: BoxDecoration(
                   color: Colors.deepPurple,
                   borderRadius: BorderRadius.circular(20)),
@@ -262,18 +262,18 @@ class _MyHomePageState extends State<MyHomePage> {
                           const SizedBox(height: 2),
                           Wrap(
                             spacing: 20,
-                            children: [
+                            children: const [
                               SquareActionWidget(
                                   isActive: false,
-                                  text: 'Refregrator',
+                                  text: 'Refrigerator',
                                   icon: Icons.ad_units),
                               SquareActionWidget(
                                   isActive: true,
-                                  text: 'Tempature',
+                                  text: 'Temperature',
                                   icon: Icons.bolt_outlined),
                               SquareActionWidget(
                                   isActive: false,
-                                  text: 'Air Condtioner',
+                                  text: 'Air Conditioner',
                                   icon: Icons.air),
                               SquareActionWidget(
                                   isActive: false,
@@ -295,7 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       spacing: 10,
                                       crossAxisAlignment:
                                           WrapCrossAlignment.center,
-                                      children: [
+                                      children: const [
                                         Icon(Icons.offline_bolt_rounded,
                                             color: Colors.deepPurple),
                                         Text(
@@ -311,7 +311,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       crossAxisAlignment:
                                           WrapCrossAlignment.center,
                                       children: [
-                                        Text(
+                                        const Text(
                                           'ON',
                                           style: TextStyle(
                                               color: Colors.black,
@@ -330,13 +330,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: const [
-                                    Icon(Icons.minimize),
+                                  children: [
+                                    const Icon(Icons.minimize),
                                     Center(
-                                      child: SizedBox(
-                                        width: 100.0,
-                                        height: 100.0,
-                                        child: CustomPaint(
+                                      child: Container(
+                                        width: 150.0,
+                                        height: 150.0,
+                                        color: Colors.white,
+                                        child: const CustomPaint(
                                           painter: GradientArcPainter(
                                             progress: .2,
                                             startColor: Colors.deepPurple,
@@ -361,149 +362,152 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(width: 12),
-            Container(
-              width: size.width * .35,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20)),
-                  color: Colors.grey.shade200),
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+            SingleChildScrollView(
+              child: Container(
+                width: size.width * .35,
+                decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.only(topLeft: Radius.circular(20)),
+                    color: Colors.grey.shade200),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: const [
+                            Icon(Icons.settings),
+                            SizedBox(width: 2),
+                            Icon(Icons.notifications_none),
+                            SizedBox(width: 12),
+                            CircleAvatar(
+                              backgroundColor: Colors.deepPurple,
+                              child: Icon(Icons.person),
+                            ),
+                            SizedBox(width: 12),
+                            Text('Scarlet')
+                          ]),
+                      const SizedBox(
+                        height: 12.0,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'My Devices',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Wrap(
+                              spacing: 10,
+                              children: const [
+                                Text('on'),
+                                Icon(Icons.chevron_right)
+                              ],
+                            )
+                          ]),
+                      const SizedBox(height: 12),
+                      Wrap(
+                        spacing: 20,
+                        runSpacing: 20,
                         children: const [
-                          Icon(Icons.settings),
-                          SizedBox(width: 2),
-                          Icon(Icons.notifications_none),
-                          SizedBox(width: 12),
-                          CircleAvatar(
-                            child: Icon(Icons.person),
-                            backgroundColor: Colors.deepPurple,
+                          RectangleActionWidget(
+                            isActive: true,
+                            icon: Icons.ad_units,
+                            text: 'Refregration',
+                            color: Colors.purple,
                           ),
-                          SizedBox(width: 12),
-                          Text('Scarlet')
-                        ]),
-                    const SizedBox(
-                      height: 12.0,
-                    ),
-                    Row(
+                          RectangleActionWidget(
+                            isActive: true,
+                            icon: Icons.router,
+                            text: 'Router',
+                            color: Colors.amber,
+                          ),
+                          RectangleActionWidget(
+                            isActive: true,
+                            icon: Icons.blur_circular_rounded,
+                            text: 'Refregration',
+                            color: Colors.orangeAccent,
+                          ),
+                          RectangleActionWidget(
+                            isActive: true,
+                            icon: Icons.sunny,
+                            text: 'Lights',
+                            color: Colors.lightBlue,
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'My Devices',
+                        children: const [
+                          Text(
+                            'Members',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          Wrap(
-                            spacing: 10,
+                          Icon(Icons.arrow_forward_ios_outlined)
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Container(
+                        height: 90,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            color: Colors.white),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: const [
-                              Text('on'),
-                              Icon(Icons.chevron_right)
+                              CircularProfile(
+                                name: 'Scarlet',
+                                icon: Icons.person,
+                                role: 'Admin',
+                              ),
+                              CircularProfile(
+                                name: 'Nariya',
+                                icon: Icons.person,
+                                role: 'Full Access',
+                              ),
+                              CircularProfile(
+                                name: 'Riya',
+                                icon: Icons.person,
+                                role: 'Full Access',
+                              ),
+                              CircularProfile(
+                                name: 'Dad',
+                                icon: Icons.person,
+                                role: 'Full Access',
+                              ),
+                              CircularProfile(
+                                name: 'Mom',
+                                icon: Icons.person,
+                                role: 'Full Access',
+                              ),
                             ],
-                          )
-                        ]),
-                    const SizedBox(height: 12),
-                    Wrap(
-                      spacing: 20,
-                      runSpacing: 20,
-                      children: [
-                        RectangleActionWidget(
-                          isActive: true,
-                          icon: Icons.ad_units,
-                          text: 'Refregration',
-                          color: Colors.purple,
-                        ),
-                        RectangleActionWidget(
-                          isActive: true,
-                          icon: Icons.router,
-                          text: 'Router',
-                          color: Colors.amber,
-                        ),
-                        RectangleActionWidget(
-                          isActive: true,
-                          icon: Icons.blur_circular_rounded,
-                          text: 'Refregration',
-                          color: Colors.orangeAccent,
-                        ),
-                        RectangleActionWidget(
-                          isActive: true,
-                          icon: Icons.sunny,
-                          text: 'Lights',
-                          color: Colors.lightBlue,
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text(
-                          'Members',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Icon(Icons.arrow_forward_ios_outlined)
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    Container(
-                      height: 90,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          color: Colors.white),
-                      child: Padding(
-                        padding: EdgeInsets.all(8),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            CircularProfile(
-                              name: 'Scarlet',
-                              icon: Icons.person,
-                              role: 'Admin',
-                            ),
-                            CircularProfile(
-                              name: 'Nariya',
-                              icon: Icons.person,
-                              role: 'Full Access',
-                            ),
-                            CircularProfile(
-                              name: 'Riya',
-                              icon: Icons.person,
-                              role: 'Full Access',
-                            ),
-                            CircularProfile(
-                              name: 'Dad',
-                              icon: Icons.person,
-                              role: 'Full Access',
-                            ),
-                            CircularProfile(
-                              name: 'Mom',
-                              icon: Icons.person,
-                              role: 'Full Access',
-                            ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'Powerd Consumer',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Wrap(
-                            spacing: 10,
-                            children: const [
-                              Text('Month'),
-                              Icon(Icons.chevron_right)
-                            ],
-                          )
-                        ]),
-                    const SizedBox(height: 12),
-                    GraphChart(width: size.width * .30)
-                  ],
+                      const SizedBox(height: 12),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Powered Consumer',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Wrap(
+                              spacing: 10,
+                              children: const [
+                                Text('Month'),
+                                Icon(Icons.chevron_right)
+                              ],
+                            )
+                          ]),
+                      const SizedBox(height: 12),
+                      GraphChart(width: size.width * .33)
+                    ],
+                  ),
                 ),
               ),
             ),
