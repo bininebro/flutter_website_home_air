@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_design/widgets/gradient_arc_painter.dart';
+import 'package:flutter_web_design/widgets/rectangle_action_widgets.dart';
 import 'package:flutter_web_design/widgets/square_action_widget.dart';
 
 void main() {
@@ -352,7 +353,64 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-          )
+          ),
+          const SizedBox(width: 12),
+          SizedBox(
+              width: size.width * .30,
+              child: Column(children: [
+                Row(mainAxisAlignment: MainAxisAlignment.end, children: const [
+                  Icon(Icons.settings),
+                  SizedBox(width: 2),
+                  Icon(Icons.notifications_none),
+                  SizedBox(width: 12),
+                  CircleAvatar(
+                    child: Icon(Icons.person),
+                    backgroundColor: Colors.deepPurple,
+                  ),
+                  SizedBox(width: 12),
+                  Text('Scarlet')
+                ]),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text('My Devices'),
+                      Wrap(
+                        spacing: 10,
+                        children: const [Text('on'), Icon(Icons.chevron_right)],
+                      )
+                    ]),
+                const SizedBox(height: 12),
+                Wrap(
+                  spacing: 20,
+                  runSpacing: 20,
+                  children: [
+                    RectangleActionWidget(
+                      isActive: true,
+                      icon: Icons.ad_units,
+                      text: 'Refregration',
+                      color: Colors.purple,
+                    ),
+                    RectangleActionWidget(
+                      isActive: true,
+                      icon: Icons.router,
+                      text: 'Router',
+                      color: Colors.amber,
+                    ),
+                    RectangleActionWidget(
+                      isActive: true,
+                      icon: Icons.blur_circular_rounded,
+                      text: 'Refregration',
+                      color: Colors.orangeAccent,
+                    ),
+                    RectangleActionWidget(
+                      isActive: true,
+                      icon: Icons.sunny,
+                      text: 'Lights',
+                      color: Colors.lightBlue,
+                    )
+                  ],
+                ),
+              ]))
         ],
       ),
     ));
